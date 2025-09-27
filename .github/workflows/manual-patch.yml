@@ -255,7 +255,7 @@ jobs:
         uses: ./.github/actions/release
   patch_spotify_anddea:
     name: Patch Spotify Anddea
-    if: ${{ github.event.inputs.org == 'Spotify' || inputs.org == 'Spotify' }}
+    if: ${{ github.event.inputs.org == 'Spotify Anddea' || inputs.org == 'Spotify Anddea' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

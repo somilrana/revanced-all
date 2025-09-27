@@ -9,4 +9,4 @@ dl_gh "revanced-patches" "anddea" "latest"
 # Patch Spotify
 get_patches_key "Spotjfy-anddea"
 get_apkpure "com.spotify.music" "spotify-arm64-v8a" "spotify-music-and-podcasts-for-android/com.spotify.music"
-patch "spotjfy-arm64-v8a" "anddea"
+patch "spotify-arm64-v8a" "anddea"

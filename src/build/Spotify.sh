@@ -4,7 +4,7 @@ source src/build/utils.sh
 
 # Download
 dl_gh "revanced-patches" "anddea" "latest"
-# dl_gh "revanced-cli" "inotia00" "latest"
+dl_gh "revanced-cli" "inotia00" "latest"
 
 # Patch Spotify
 get_patches_key "Spotjfy-anddea"

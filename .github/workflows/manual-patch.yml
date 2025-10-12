@@ -61,7 +61,7 @@ jobs:
         uses: ./.github/actions/release
   patch_instagram:
     name: Patch Instagram
-    if: ${{ github.event.inputs.org == 'Revanced' || inputs.org == 'Revanced' }}
+    if: ${{ github.event.inputs.org == 'Instagram' || inputs.org == 'Instagram' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -69,7 +69,7 @@ jobs:
       - name: Preparing to patch
         uses: ./.github/actions/preparing
       - name: Check github connection
-        id: check-gh-rv
+        id: check-gh-instagram
         run: bash src/etc/connection.sh
       - name: Patch apk
         id: patch-instagram

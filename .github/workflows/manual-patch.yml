@@ -72,7 +72,7 @@ jobs:
         id: check-gh-rv
         run: bash src/etc/connection.sh
       - name: Patch apk
-        id: patch-rv
+        id: patch-instagram
         if: steps.check-gh-rv.outputs.internet_error == '0'
         run: bash src/build/Instagram.sh
       - name: Releasing APK files

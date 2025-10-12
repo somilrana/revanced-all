@@ -15,6 +15,7 @@ on:
         type: choice
         options:
           - 'Revanced'
+          - 'Instagram'
           - 'Revanced Beta'
           - 'Revanced Extended'
           - 'Revanced Extended Beta'
@@ -58,6 +59,27 @@ jobs:
         id: release-rv
         if: steps.check-gh-rv.outputs.internet_error == '0'
         uses: ./.github/actions/release
+  patch_instagram:
+    name: Patch Instagram
+    if: ${{ github.event.inputs.org == 'Revanced' || inputs.org == 'Revanced' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Preparing to patch
+        uses: ./.github/actions/preparing
+      - name: Check github connection
+        id: check-gh-rv
+        run: bash src/etc/connection.sh
+      - name: Patch apk
+        id: patch-rv
+        if: steps.check-gh-rv.outputs.internet_error == '0'
+        run: bash src/build/Instagram.sh
+      - name: Releasing APK files
+        id: release-instagram
+        if: steps.check-gh-rv.outputs.internet_error == '0'
+        uses: ./.github/actions/release
+        
   patch_rv_beta:
     name: Patch Revanced Beta
     if: ${{ github.event.inputs.org == 'Revanced Beta' || inputs.org == 'Revanced Beta' }}

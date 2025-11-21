@@ -16,6 +16,7 @@ on:
         options:
           - 'Revanced'
           - 'Instagram'
+          - 'Spotify Revanced'
           - 'Revanced Beta'
           - 'Revanced Extended'
           - 'Revanced Extended Beta'
@@ -77,6 +78,26 @@ jobs:
         run: bash src/build/Instagram.sh
       - name: Releasing APK files
         id: release-instagram
+        if: steps.check-gh-rv.outputs.internet_error == '0'
+        uses: ./.github/actions/release
+  patch_spotify_revanced:
+    name: Patch Spotify
+    if: ${{ github.event.inputs.org == 'Spotify Revanced' || inputs.org == 'Spotify Revanced' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Preparing to patch
+        uses: ./.github/actions/preparing
+      - name: Check github connection
+        id: check-gh-spotify
+        run: bash src/etc/connection.sh
+      - name: Patch apk
+        id: patch-spotify
+        if: steps.check-gh-rv.outputs.internet_error == '0'
+        run: bash src/build/Spotjfy.sh
+      - name: Releasing APK files
+        id: release-spotify
         if: steps.check-gh-rv.outputs.internet_error == '0'
         uses: ./.github/actions/release
         
